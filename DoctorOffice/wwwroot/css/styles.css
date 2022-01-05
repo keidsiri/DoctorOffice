@@ -1,0 +1,57 @@
+div#footer {
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	color:#CCC;
+	background:#333;
+	padding:8px;
+}
+
+#home-index {
+	background-image: url(../css/Img/university.jpeg);
+	background-repeat: no-repeat;
+  background-size: cover;
+  background-position: inherit;
+  text-align: center;
+	height: 450px;
+  box-shadow: 0px 1px 15px rgb(109, 109, 109);
+  border-radius: 0px;
+}
+
+#home-buttons {
+	margin-top: 40px;
+	margin-bottom: 60px;
+}
+
+#courses-img {
+	background-image: url(../css/Img/courses.jpeg);
+	background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0px 1px 15px rgb(109, 109, 109);
+  border-radius: 50%;
+	margin: auto;
+}
+
+#students-img {
+	background-image: url(../css/Img/students.jpeg);
+	background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0px 1px 15px rgb(109, 109, 109);
+  border-radius: 50%;
+	margin: auto;
+}
+
+/* body {
+	background-image: url(../css/Img/university.jpeg);
+	background-size: cover;
+	background-repeat: no-repeat;
+} */
