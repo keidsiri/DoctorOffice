@@ -4,6 +4,7 @@
 
 @model DoctorOffice.Models.Doctor;
 
+
 <h2>Doctor Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
@@ -19,6 +20,21 @@ else
   @foreach(var join in Model.JoinEntities)
   {
     <li>@join.Patient.Name</li>
+  }
+  </ul>
+}
+
+@if(@Model.JoinEntitiesSpecialty.Count == 0)
+{
+  <p>This doctor has no specialties</p>
+}
+else
+{
+  <h4>Specialties belonging to this doctor</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntitiesSpecialty)
+  {
+    <li>@join.Specialty.Name</li>
   }
   </ul>
 }

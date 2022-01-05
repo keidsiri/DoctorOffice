@@ -1,4 +1,5 @@
-namespace DoctorOffice.Models{
+namespace DoctorOffice.Models
+{
   public class DoctorPatient
   {
     public int DoctorPatientId {get; set;}

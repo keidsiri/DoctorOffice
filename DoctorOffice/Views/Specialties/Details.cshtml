@@ -8,7 +8,7 @@
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 
-@if(@Model.JoinEntities.Count == 0)
+@if(@Model.JoinEntitiesSpecialty.Count == 0)
 {
   <p>No doctors belong to this specialty</p>
 }
@@ -16,9 +16,9 @@ else
 {
   <h4>Doctors belonging to this specialty</h4>
   <ul>
-  @foreach(var join in @Model.JoinEntities)
+  @foreach(var join in @Model.JoinEntitiesSpecialty)
   {
-    <li>@join.Doctor.Name</li>
+    <li>@join.Doctor.Name :  @join.DoctorId</li>
   }
   </ul>
 }

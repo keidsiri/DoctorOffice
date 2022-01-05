@@ -27,16 +27,16 @@ namespace DoctorOffice.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Specialty specialty, int SpecialtyId)
+    public ActionResult Create(Specialty specialty)
     {
       _db.Specialties.Add(specialty);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-      public ActionResult Details(int id)
+    public ActionResult Details(int id)
     {
       var thisSpecialty = _db.Specialties
-      .Include(specialty => specialty.JoinEntities)
+      .Include(specialty => specialty.JoinEntitiesSpecialty)
       .ThenInclude(join => join.Doctor)
       .FirstOrDefault(specialty => specialty.SpecialtyId == id);
       return View(thisSpecialty);
@@ -70,5 +70,23 @@ namespace DoctorOffice.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult AddDoctor(int id)
+      {
+          var thisPatient = _db.Patients.FirstOrDefault(patient => patient.PatientId == id);
+          ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
+          return View(thisPatient);
+      }
+
+      [HttpPost]
+      public ActionResult AddDoctor(Patient patient, int DoctorId)
+      {
+          if (DoctorId != 0)
+          {
+          _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = DoctorId, PatientId = patient.PatientId });
+          }
+          _db.SaveChanges();
+          return RedirectToAction("Index");
+      }
   }
 }
