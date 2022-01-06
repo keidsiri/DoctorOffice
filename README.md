@@ -1,1 +1,1 @@
-*![alt text align="center"](https://github.com/keidsiri/DoctorOffice/blob/main/DoctorOffice/wwwroot/Img/sql.JPG?raw=true)*
+<img align="center" class="ReadMeImg"> ![alt text](https://github.com/keidsiri/DoctorOffice/blob/main/DoctorOffice/wwwroot/Img/sql.JPG?raw=true)
