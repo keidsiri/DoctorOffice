@@ -20,6 +20,11 @@ else
   @foreach(var join in Model.JoinEntities)
   {
     <li>@join.Patient.Name</li>
+    @using (Html.BeginForm("DeletePatient", "Doctors"))
+    {
+      @Html.Hidden("joinId", @join.DoctorPatientId)
+      <input type="submit" value="Delete"/>
+    }
   }
   </ul>
 }
@@ -35,10 +40,17 @@ else
   @foreach(var join in Model.JoinEntitiesSpecialty)
   {
     <li>@join.Specialty.Name</li>
+    @using (Html.BeginForm("DeleteSpecialty", "Doctors"))
+    {
+      @Html.Hidden("joinId", @join.DoctorSpecialtyId)
+      <input type="submit" value="Delete"/>
+    }
   }
   </ul>
 }
 
+<p>@Html.ActionLink("Add a patient to this doctor", "AddPatient", new { id = Model.DoctorId })</p>
+<p>@Html.ActionLink("Add a specialty to this doctor", "AddSpecialty", new { id = Model.DoctorId })</p>
 <p>@Html.ActionLink("Back to list of doctors", "Index")</p>
 <p>@Html.ActionLink("Edit this doctor", "Edit", new { id = Model.DoctorId })</p>
 <p>@Html.ActionLink("Delete this doctor", "Delete", new { id = Model.DoctorId })</p>

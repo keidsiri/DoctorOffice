@@ -79,5 +79,59 @@ namespace DoctorOffice.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    [HttpPost]
+    public ActionResult DeletePatient(int joinId)
+    {
+      var joinEntry = _db.DoctorPatient.FirstOrDefault(entry => entry.DoctorPatientId == joinId);
+      _db.DoctorPatient.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteSpecialty(int joinId)
+    {
+      var joinEntry = _db.DoctorSpecialty.FirstOrDefault(entry => entry.DoctorSpecialtyId == joinId);
+      _db.DoctorSpecialty.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult AddPatient(int id)
+    {
+      var thisDoctor = _db.Doctors.FirstOrDefault(doctor => doctor.DoctorId== id);
+      ViewBag.PatientId = new SelectList(_db.Patients, "PatientId", "Name");
+      return View(thisDoctor);
+    }
+
+    [HttpPost]
+    public ActionResult AddPatient(Doctor doctor, int PatientId)
+    {
+      if (PatientId != 0)
+      {
+      _db.DoctorPatient.Add(new DoctorPatient() { PatientId = PatientId , DoctorId = doctor.DoctorId});
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult AddSpecialty(int id)
+    {
+      var thisDoctor = _db.Doctors.FirstOrDefault(doctor => doctor.DoctorId== id);
+      ViewBag.SpecialtyId = new SelectList(_db.Specialties, "SpecialtyId", "Name");
+      return View(thisDoctor);
+    }
+
+    [HttpPost]
+    public ActionResult AddSpecialty(Doctor doctor, int SpecialtyId)
+    {
+      if (SpecialtyId != 0)
+      {
+      _db.DoctorSpecialty.Add(new DoctorSpecialty() { SpecialtyId = SpecialtyId , DoctorId = doctor.DoctorId});
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

@@ -28,6 +28,7 @@ else
   </ul>
 }
 
+<p>@Html.ActionLink("Add a doctor to this specialty", "AddDoctor", new { id = Model.SpecialtyId })</p>
 <p>@Html.ActionLink("Back to list of specialties", "Index")</p>
 <p>@Html.ActionLink("Edit this specialty", "Edit", new { id = Model.SpecialtyId })</p>
 <p>@Html.ActionLink("Delete this specialty", "Delete", new { id = Model.SpecialtyId })</p>
