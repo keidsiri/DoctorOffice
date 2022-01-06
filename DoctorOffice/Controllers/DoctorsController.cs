@@ -37,6 +37,7 @@ namespace DoctorOffice.Controllers
       {
         _db.DoctorSpecialty.Add(new DoctorSpecialty() { SpecialtyId = SpecialtyId, DoctorId = doctor.DoctorId});
       }
+      _db.SaveChanges();
       return RedirectToAction("Index");
     }
     

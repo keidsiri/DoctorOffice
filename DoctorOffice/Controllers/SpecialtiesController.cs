@@ -72,21 +72,21 @@ namespace DoctorOffice.Controllers
     }
 
     public ActionResult AddDoctor(int id)
-      {
-          var thisPatient = _db.Patients.FirstOrDefault(patient => patient.PatientId == id);
-          ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
-          return View(thisPatient);
-      }
+    {
+      var thisPatient = _db.Patients.FirstOrDefault(patient => patient.PatientId == id);
+      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
+      return View(thisPatient);
+    }
 
-      [HttpPost]
-      public ActionResult AddDoctor(Patient patient, int DoctorId)
+    [HttpPost]
+    public ActionResult AddDoctor(Patient patient, int DoctorId)
+    {
+      if (DoctorId != 0)
       {
-          if (DoctorId != 0)
-          {
-          _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = DoctorId, PatientId = patient.PatientId });
-          }
-          _db.SaveChanges();
-          return RedirectToAction("Index");
+      _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = DoctorId, PatientId = patient.PatientId });
       }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
